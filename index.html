@@ -19,29 +19,29 @@
             <table class="border-collapse table-fixed w-full text-sm">
                 <thead class="bg-emerald-500 h-14">
                     <tr>
-                        <th class="border-b font-medium p-4 pl-8 pt-0 pb-3 text-left">No</th>
-                        <th class="border-b font-medium p-4 pt-0 pb-3 text-left">Tanggal Pendaftaran</th>
-                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-left">Nama</th>
-                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-left">Alamat</th>
-                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-left">Telepon</th>
-                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-left">Jenis Kelamin</th>
-                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-left">Jenis Kursus</th>
+                        <th class="border-b font-medium p-4 text-left">No</th>
+                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-center">Nama</th>
+                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-center">Alamat</th>
+                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-center">Telepon</th>
+                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-center">Jenis Kelamin</th>
+                        <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-center">Jenis Kursus</th>
+                        <th class="border-b font-medium p-4 pt-0 pb-3 text-center">Tanggal Pendaftaran</th>
                     </tr>
                 </thead>
-                <tbody class="bg-emerald-100">
-                    <tr>
-                        <td class="border-b p-4 pl-8 text-gray-600">12345</td>
-                        <td class="border-b p-4 text-gray-600">10/10/2023</td>
-                        <td class="border-b p-4 pr-8 text-gray-600">King</td>
-                        <td class="border-b p-4 pr-8 text-gray-600">Depok</td>
-                        <td class="border-b p-4 pr-8 text-gray-600">+62</td>
-                        <td class="border-b p-4 pr-8 text-gray-600">Laki-Laki</td>
-                        <td class="border-b p-4 pr-8 text-gray-600">Web Dev</td>
-                    </tr>
+                <tbody class="bg-emerald-100" id="item-registrations">
                 </tbody>
             </table>
         </div>
     </div>
+
+    <!-- Add your form elements for adding, editing, and deleting items here -->
+    <!-- <div id="item-collection"></div> -->
+
+    <script src="app.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        // Call your JavaScript functions to perform CRUD operations here
+        fetchItems();
+    </script>
 </body>
 
 </html>

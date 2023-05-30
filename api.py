@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 from database import connect_to_database, create_cursor
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Connect to the database and create a cursor
 cnx = connect_to_database()
