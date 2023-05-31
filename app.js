@@ -7,21 +7,24 @@ function fetchItems() {
 }
 
 function renderItems(items) {
-    console.log(items)
+    console.log(items);
     itemCollection.innerHTML = "";
     items.forEach(function (item) {
         itemCollection.innerHTML += `
-      <tr data-id=${item.No}>
-          <td class="border-b p-4 pl-8 text-gray-600">${item.No}</td>
-          <td class="border-b p-4 pl-8 text-gray-600">${item.Nama}</td>
-          <td class="border-b p-4 pl-8 text-gray-600">${item.Alamat}</td>
-          <td class="border-b p-4 pl-8 text-gray-600">${item.Telp}</td>
-          <td class="border-b p-4 pl-8 text-gray-600">${item.Jenis_Kelamin}</td>
-          <td class="border-b p-4 pl-8 text-gray-600">${item.Jenis_Kursus}</td>
-          <td class="border-b p-4 text-gray-600">${item.Tgl_Pendaftaran}</td>    
-          <td class="border-b p-4 text-gray-600 flex gap-1" > <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Update</button><button class=" bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</button > </td>
-      </tr>
-    `;
+        <tr data-id=${item.No}>
+            <td class="border-b p-4 pl-8 text-gray-600">${item.No}</td>
+            <td class="border-b p-4 pl-8 text-gray-600">${item.Nama}</td>
+            <td class="border-b p-4 pl-8 text-gray-600">${item.Alamat}</td>
+            <td class="border-b p-4 pl-8 text-gray-600">${item.Telp}</td>
+            <td class="border-b p-4 pl-8 text-gray-600">${item.Jenis_Kelamin}</td>
+            <td class="border-b p-4 pl-8 text-gray-600">${item.Jenis_Kursus}</td>
+            <td class="border-b p-4 text-gray-600">${item.Tgl_Pendaftaran}</td>    
+            <td class="border-b p-4 text-gray-600 flex gap-1">
+              <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Update</button>
+              <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onclick="deleteItem(${item.No})">Delete</button>
+            </td>
+        </tr>
+      `;
     });
 }
 
@@ -42,12 +45,12 @@ createForm.addEventListener('submit', (event) => {
     };
     console.log(kursus);
     fetch('http://127.0.0.1:5000/registrations', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(kursus)
-        })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(kursus)
+    })
         .then(response => response.json())
         .then(data => {
             console.log('Kursus created:', data);
@@ -58,6 +61,22 @@ createForm.addEventListener('submit', (event) => {
             // Handle error case, such as showing an error message to the user.
         });
 });
+
+function deleteItem(itemId) {
+    fetch(`http://localhost:5000/registrations/${itemId}`, {
+        method: 'DELETE'
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Item deleted:', data);
+            // Perform any further actions after item deletion, such as updating the UI or showing a success message.
+            fetchItems(); // Refresh the item list after deletion.
+        })
+        .catch(error => {
+            console.error('Error deleting item:', error);
+            // Handle error case, such as showing an error message to the user.
+        });
+}
 
 
 // ** Update Delete
