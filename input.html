@@ -12,78 +12,78 @@
 
 <body>
     <div class="container my-auto w-full h-screen">
-        <form class="max-w-md mx-auto  shadow-lg rounded-lg px-8 py-6 bg-emerald-500">
+        <form class="max-w-md mx-auto  shadow-lg rounded-lg px-8 py-6 bg-emerald-500" id="createForm">
             <h2 class="text-2xl font-bold mb-6 text-center">Kursus Form</h2>
 
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="name">
+                <label class="block text-gray-700 font-bold mb-2" for="no">
                     No
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="name" type="text" placeholder="012345">
+                    id="no" type="text" placeholder="012345">
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="">
+                <label class="block text-gray-700 font-bold mb-2" for="tgl_pendaftaran">
                     Tanggal Pendaftaran
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="" type="date" >
+                    id="tgl_pendaftaran" type="date">
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="">
+                <label class="block text-gray-700 font-bold mb-2" for="nama">
                     Nama
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="" type="text" placeholder="King">
+                    id="nama" type="text" placeholder="King">
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="">
+                <label class="block text-gray-700 font-bold mb-2" for="alamat">
                     Alamat
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="" type="text" placeholder="Indonesia">
+                    id="alamat" type="text" placeholder="Indonesia">
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="">
+                <label class="block text-gray-700 font-bold mb-2" for="telepon">
                     Telepon
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="" type="number" placeholder="+62">
+                    id="telepon" type="string" placeholder="+62">
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="">
+                <label class="block text-gray-700 font-bold mb-2" for="jenis_kelamin">
                     Jenis Kelamin
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="email" type="" >
+                    id="jk" type="">
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="email">
+                <label class="block text-gray-700 font-bold mb-2" for="jenis_kursus">
                     Jenis Kursus
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="email" type="" >
+                    id="jenis_kursus" type="">
             </div>
-
-
             <div class="flex items-center justify-center">
-                <a href="index.html"
+                <button 
                     class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="button">
+                    type="submit">
                     Submit
-                </a>
+                </button>
             </div>
         </form>
 
     </div>
+
+    <script src="app.js"></script>
 </body>
 
 </html>
