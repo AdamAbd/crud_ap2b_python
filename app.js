@@ -28,35 +28,35 @@ function renderItems(items) {
 // ** Create data
 const createForm = document.getElementById('createForm');
 
- createForm.addEventListener('submit', (event) => {
-     console.info("testing");
-     event.preventDefault();
-    
+createForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
     const kursus = {
-        no: document.getElementById('no').value,
-        tgl_pendaftaran: document.getElementById('tgl_pendaftaran').value,
-        nama: document.getElementById('nama').value,
-        alamat: document.getElementById('alamat').value,
-        telepon: document.getElementById('telepon').value,
-        jenis_kelamin: document.getElementById('jenis_kelamin').value,
-        jenis_kursus: document.getElementById('jenis_kursus').value
+        No: document.getElementById('no').value,
+        Tgl_Pendaftaran: document.getElementById('tgl_pendaftaran').value,
+        Nama: document.getElementById('nama').value,
+        Alamat: document.getElementById('alamat').value,
+        Telepon: document.getElementById('telepon').value,
+        Jenis_Kelamin: document.getElementById('jenis_kelamin').value,
+        Jenis_Kursus: document.getElementById('jenis_kursus').value
     };
-    // fetch('http://127.0.0.1:5000/registrations', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(kursus)
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log('Kursus created:', data);
-    //         // Perform any further actions after kursus creation, such as showing a success message or redirecting to another page.
-    //     })
-    //     .catch(error => {
-    //         console.error('Error creating kursus:', error);
-    //         // Handle error case, such as showing an error message to the user.
-    //     });
+    console.log(kursus);
+    fetch('http://127.0.0.1:5000/registrations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(kursus)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Kursus created:', data);
+            // Perform any further actions after kursus creation, such as showing a success message or redirecting to another page.
+        })
+        .catch(error => {
+            console.error('Error creating kursus:', error);
+            // Handle error case, such as showing an error message to the user.
+        });
 });
 
 
