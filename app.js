@@ -36,7 +36,7 @@ createForm.addEventListener('submit', (event) => {
         Tgl_Pendaftaran: document.getElementById('tgl_pendaftaran').value,
         Nama: document.getElementById('nama').value,
         Alamat: document.getElementById('alamat').value,
-        Telepon: document.getElementById('telepon').value,
+        Telp: document.getElementById('telepon').value,
         Jenis_Kelamin: document.getElementById('jenis_kelamin').value,
         Jenis_Kursus: document.getElementById('jenis_kursus').value
     };

@@ -57,32 +57,38 @@
                     id="telepon" type="string" placeholder="+62">
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="jenis_kelamin">
+                <label class="block text-gray-700 font-bold mb-2" for="jenis_kursus">
                     Jenis Kelamin
                 </label>
-                <input
+                <select
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="jenis_kelamin" type="">
+                    id="jenis_kelamin">
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="jenis_kursus">
                     Jenis Kursus
                 </label>
-                <input
+                <select
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="jenis_kursus" type="">
+                    id="jenis_kursus">
+                    <option value="Kursus Bahasa Java">Kursus Bahasa Java</option>
+                    <option value="Kursus Pemrograman Web">Kursus Pemrograman Web</option>
+                    <option value="Kursus Python">Kursus Python</option>
+                </select>
             </div>
             <div class="flex items-center justify-center">
-                <button 
+                <button
                     class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">
+                    type="submit" onclick="window.location.href = 'index.html'">
                     Submit
                 </button>
             </div>
         </form>
 
     </div>
-
     <script src="app.js"></script>
 </body>
 
