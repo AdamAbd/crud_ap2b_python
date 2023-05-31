@@ -109,4 +109,8 @@ def delete_registration(id):
     cnx.commit()
 
     # Return a message indicating the deletion was successful
-    return "Registration record with ID: {} deleted successfully.".format(id)
+
+    return jsonify({
+        'Success': "Registration record with ID: {} deleted successfully.".format(id),
+        
+    })

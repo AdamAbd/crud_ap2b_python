@@ -62,6 +62,9 @@ createForm.addEventListener('submit', (event) => {
         });
 });
 
+
+
+// ** Delete
 function deleteItem(itemId) {
     fetch(`http://localhost:5000/registrations/${itemId}`, {
         method: 'DELETE'
@@ -77,6 +80,3 @@ function deleteItem(itemId) {
             // Handle error case, such as showing an error message to the user.
         });
 }
-
-
-// ** Delete
