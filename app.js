@@ -1,5 +1,13 @@
 const itemCollection = document.getElementById('item-registrations');
 
+function getQueryParam(param) {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Get the ID from the URL
+var id = getQueryParam("id");
+
 function fetchItems() {
     fetch('http://localhost:5000/registrations')
         .then(resp => resp.json())
@@ -45,22 +53,43 @@ createForm.addEventListener('submit', (event) => {
         Jenis_Kursus: document.getElementById('jenis_kursus').value
     };
     console.log(kursus);
-    fetch('http://127.0.0.1:5000/registrations', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(kursus)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Kursus created:', data);
-            // Perform any further actions after kursus creation, such as showing a success message or redirecting to another page.
-        })
-        .catch(error => {
-            console.error('Error creating kursus:', error);
-            // Handle error case, such as showing an error message to the user.
-        });
+    if (id) {
+        fetch(`http://127.0.0.1:5000/registrations/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(kursus)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Kursus created:', data);
+                // Perform any further actions after kursus creation, such as showing a success message or redirecting to another page.
+            })
+            .catch(error => {
+                console.error('Error creating kursus:', error);
+                // Handle error case, such as showing an error message to the user.
+            });
+
+    } else {
+        fetch('http://127.0.0.1:5000/registrations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(kursus)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Kursus created:', data);
+                // Perform any further actions after kursus creation, such as showing a success message or redirecting to another page.
+            })
+            .catch(error => {
+                console.error('Error creating kursus:', error);
+                // Handle error case, such as showing an error message to the user.
+            });
+
+    }
 });
 
 
@@ -87,4 +116,41 @@ function deleteItem(itemId) {
 function redirectToRegistration(id) {
     var url = "http://localhost:5500/input.html?id=" + id;
     window.location.href = url;
+}
+
+
+
+// Use the ID as needed
+if (id) {
+    // Display the ID on the page
+    fetchItemById(id);
+    // Perform any other actions with the ID...
+}
+
+
+
+function fetchItemById(id) {
+    fetch(`http://localhost:5000/registrations/${id}`)
+        .then(resp => resp.json())
+        .then(renderItemById);
+}
+
+function renderItemById(items) {
+    console.log(items);
+
+    var input = document.getElementById("no");
+    input.value = id;
+    var inputDaftar = document.getElementById("tgl_pendaftaran");
+    inputDaftar.value = items.Tgl_Pendaftaran;
+    var inputNama = document.getElementById("nama");
+    inputNama.value = items.Nama;
+    var inputAlamat = document.getElementById("alamat");
+    inputAlamat.value = items.Alamat;
+    var inputTelp = document.getElementById("telepon");
+    inputTelp.value = items.Telp;
+    var inputJk = document.getElementById("jenis_kelamin");
+    inputJk.value = items.Jenis_Kelamin;
+    var inputKursus = document.getElementById("jenis_kursus");
+    inputKursus.value = items.Jenis_Kursus;
+
 }
