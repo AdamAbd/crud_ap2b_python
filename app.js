@@ -20,15 +20,16 @@ function renderItems(items) {
             <td class="border-b p-4 pl-8 text-gray-600">${item.Jenis_Kursus}</td>
             <td class="border-b p-4 text-gray-600">${item.Tgl_Pendaftaran}</td>    
             <td class="border-b p-4 text-gray-600 flex gap-1">
-              <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Update</button>
-              <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onclick="deleteItem(${item.No})">Delete</button>
+                <button onclick="redirectToRegistration(${item.No})"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" > Update </button>
+                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onclick="deleteItem(${item.No})">Delete</button>
             </td>
         </tr>
       `;
     });
 }
 
-// ** Create data
+// ! Create data
 const createForm = document.getElementById('createForm');
 
 createForm.addEventListener('submit', (event) => {
@@ -45,12 +46,12 @@ createForm.addEventListener('submit', (event) => {
     };
     console.log(kursus);
     fetch('http://127.0.0.1:5000/registrations', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(kursus)
-    })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(kursus)
+        })
         .then(response => response.json())
         .then(data => {
             console.log('Kursus created:', data);
@@ -64,11 +65,11 @@ createForm.addEventListener('submit', (event) => {
 
 
 
-// ** Delete
+// ! Delete
 function deleteItem(itemId) {
     fetch(`http://localhost:5000/registrations/${itemId}`, {
-        method: 'DELETE'
-    })
+            method: 'DELETE'
+        })
         .then(response => response.json())
         .then(data => {
             console.log('Item deleted:', data);
@@ -79,4 +80,11 @@ function deleteItem(itemId) {
             console.error('Error deleting item:', error);
             // Handle error case, such as showing an error message to the user.
         });
+}
+
+
+// ! Update
+function redirectToRegistration(id) {
+    var url = "http://localhost:5500/input.html?id=" + id;
+    window.location.href = url;
 }
