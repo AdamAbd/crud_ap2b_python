@@ -33,7 +33,6 @@ def get_registrations():
     # Return the list of records as JSON
     return jsonify(result)
 
-
 @app.route('/registrations', methods=['POST'])
 def create_registration():
     # Get the data from the request
@@ -66,6 +65,33 @@ def create_registration():
         'Jenis_Kursus': Jenis_Kursus
     })
 
+@app.route('/registrations/<int:id>', methods=['GET'])
+def get_registration(id):
+    # Execute SELECT query to get the registration record by ID
+    query = "SELECT * FROM users WHERE No = %s"
+    cursor.execute(query, (id,))
+
+    # Fetch the record
+    record = cursor.fetchone()
+
+    # Check if the record exists
+    if record is None:
+        # Return a 404 Not Found error if the record doesn't exist
+        return jsonify({'error': 'Registration record not found'}), 404
+
+    # Convert the record to a dictionary
+    result = {
+        'No': record[0],
+        'Tgl_Pendaftaran': record[1],
+        'Nama': record[2],
+        'Alamat': record[3],
+        'Telp': record[4],
+        'Jenis_Kelamin': record[5],
+        'Jenis_Kursus': record[6]
+    }
+
+    # Return the registration record as JSON
+    return jsonify(result)
 
 @app.route('/registrations/<int:id>', methods=['PUT'])
 def update_registration(id):
