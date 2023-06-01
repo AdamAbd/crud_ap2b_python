@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from database import connect_to_database, create_cursor
 from flask_cors import CORS
 
+import datetime
+
 app = Flask(__name__)
 CORS(app)
 
@@ -22,7 +24,7 @@ def get_registrations():
     for record in records:
         result.append({
             'No': record[0],
-            'Tgl_Pendaftaran': record[1],
+            'Tgl_Pendaftaran': record[1].strftime('%Y-%m-%d'),
             'Nama': record[2],
             'Alamat': record[3],
             'Telp': record[4],
@@ -82,7 +84,7 @@ def get_registration(id):
     # Convert the record to a dictionary
     result = {
         'No': record[0],
-        'Tgl_Pendaftaran': record[1],
+        'Tgl_Pendaftaran': record[1].strftime('%Y-%m-%d'),
         'Nama': record[2],
         'Alamat': record[3],
         'Telp': record[4],
