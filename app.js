@@ -9,7 +9,7 @@ function getQueryParam(param) {
 var id = getQueryParam("id");
 
 function fetchItems() {
-    fetch('http://localhost:5000/registrations')
+    fetch('http://127.0.0.1:5000/registrations')
         .then(resp => resp.json())
         .then(renderItems);
 }
@@ -55,12 +55,12 @@ createForm.addEventListener('submit', (event) => {
     console.log(kursus);
     if (id) {
         fetch(`http://127.0.0.1:5000/registrations/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(kursus)
-            })
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(kursus)
+        })
             .then(response => response.json())
             .then(data => {
                 console.log('Kursus created:', data);
@@ -73,12 +73,12 @@ createForm.addEventListener('submit', (event) => {
 
     } else {
         fetch('http://127.0.0.1:5000/registrations', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(kursus)
-            })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(kursus)
+        })
             .then(response => response.json())
             .then(data => {
                 console.log('Kursus created:', data);
@@ -97,8 +97,8 @@ createForm.addEventListener('submit', (event) => {
 // ! Delete
 function deleteItem(itemId) {
     fetch(`http://localhost:5000/registrations/${itemId}`, {
-            method: 'DELETE'
-        })
+        method: 'DELETE'
+    })
         .then(response => response.json())
         .then(data => {
             console.log('Item deleted:', data);
@@ -130,7 +130,7 @@ if (id) {
 
 
 function fetchItemById(id) {
-    fetch(`http://localhost:5000/registrations/${id}`)
+    fetch(`http://127.0.0.1:5000/registrations/${id}`)
         .then(resp => resp.json())
         .then(renderItemById);
 }
